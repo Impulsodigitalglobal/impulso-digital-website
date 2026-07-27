@@ -1,7 +1,8 @@
 import { build } from 'esbuild';
-import { copyFile, mkdir } from 'node:fs/promises';
+import { copyFile, cp, mkdir } from 'node:fs/promises';
 
 await mkdir('standalone', { recursive: true });
+
 await build({
   entryPoints: ['src/main.jsx'],
   bundle: true,
@@ -11,4 +12,14 @@ await build({
   minify: true,
   loader: { '.jsx': 'jsx' },
 });
+
 await copyFile('src/styles.css', 'standalone/app.css');
+
+// Copiar las imágenes del portafolio a la carpeta publicada por Vercel
+await mkdir('dist/standalone/project-assets', { recursive: true });
+
+await cp(
+  'standalone/project-assets',
+  'dist/standalone/project-assets',
+  { recursive: true }
+);
