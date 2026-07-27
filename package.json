@@ -1,0 +1,20 @@
+{
+  "name": "impulso-digital-system",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "node node_modules/vite/bin/vite.js build && node scripts/build-standalone.mjs",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^1.21.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "vite": "^7.3.3"
+  }
+}

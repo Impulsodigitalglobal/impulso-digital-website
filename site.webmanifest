@@ -1,0 +1,25 @@
+{
+  "name": "Impulso Digital",
+  "short_name": "Impulso",
+  "description": "Websites, branding y presencia digital profesional para negocios locales, emprendedores y artistas.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#02050a",
+  "theme_color": "#02050a",
+  "lang": "es-US",
+  "icons": [
+    {
+      "src": "/standalone/impulso-logo-mark-blue.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/standalone/impulso-logo-official-blue-transparent.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
