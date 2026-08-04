@@ -237,7 +237,7 @@
   .mobile-orbit-button:before{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid rgba(110,206,255,.18);box-shadow:0 0 22px rgba(0,181,255,.08);}
   .mobile-orbit-button:after{content:"";position:absolute;left:50%;bottom:-22px;width:1px;height:18px;background:linear-gradient(180deg,rgba(111,230,255,.8),transparent);box-shadow:0 0 12px rgba(111,230,255,.8);}
   .mobile-orbit-button svg{width:22px;height:22px;stroke-width:1.8;filter:drop-shadow(0 0 8px rgba(84,236,255,.55));}
-  .mobile-orbit-button small{position:absolute;top:76px;left:50%;translate:-50% 0;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:900;letter-spacing:.2em;color:#9eeaff;text-shadow:0 0 10px rgba(49,205,255,.65);}
+  .mobile-orbit-button small{position:absolute;top:76px;left:50%;translate:-50% 0;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-size:10.5px;font-weight:900;letter-spacing:.2em;color:#9eeaff;text-shadow:0 0 10px rgba(49,205,255,.65);}
   .mobile-orbit-button-glow{position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(68,255,204,.28),rgba(0,160,255,.14) 35%,transparent 68%);opacity:.35;filter:blur(2px);animation:mobileOrbitPulse 2.8s ease-in-out infinite;}
   .mobile-orbit-button.active{border-color:rgba(100,255,218,.94);background:radial-gradient(circle at 40% 28%,rgba(140,255,229,.72),rgba(0,98,143,.9) 47%,rgba(9,20,39,.98) 100%);box-shadow:inset 0 0 24px rgba(255,255,255,.12),0 0 0 7px rgba(69,255,211,.1),0 0 30px rgba(66,255,203,.38),0 0 52px rgba(0,157,255,.25);}
   .mobile-orbit-button.active .mobile-orbit-button-glow{opacity:.85;animation-duration:1.8s;}
@@ -267,7 +267,7 @@
   .system-shell.mobile-preview .mobile-orbit-button:before{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid rgba(110,206,255,.18);box-shadow:0 0 22px rgba(0,181,255,.08);}
   .system-shell.mobile-preview .mobile-orbit-button:after{content:"";position:absolute;left:50%;bottom:-22px;width:1px;height:18px;background:linear-gradient(180deg,rgba(111,230,255,.8),transparent);box-shadow:0 0 12px rgba(111,230,255,.8);}
   .system-shell.mobile-preview .mobile-orbit-button svg{width:22px;height:22px;stroke-width:1.8;filter:drop-shadow(0 0 8px rgba(84,236,255,.55));}
-  .system-shell.mobile-preview .mobile-orbit-button small{position:absolute;top:76px;left:50%;translate:-50% 0;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:900;letter-spacing:.2em;color:#9eeaff;text-shadow:0 0 10px rgba(49,205,255,.65);}
+  .system-shell.mobile-preview .mobile-orbit-button small{position:absolute;top:76px;left:50%;translate:-50% 0;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-size:10.5px;font-weight:900;letter-spacing:.2em;color:#9eeaff;text-shadow:0 0 10px rgba(49,205,255,.65);}
   .system-shell.mobile-preview .mobile-orbit-button-glow{position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(68,255,204,.28),rgba(0,160,255,.14) 35%,transparent 68%);opacity:.35;filter:blur(2px);animation:mobileOrbitPulse 2.8s ease-in-out infinite;}
   .system-shell.mobile-preview .mobile-orbit-button.active{border-color:rgba(100,255,218,.94);background:radial-gradient(circle at 40% 28%,rgba(140,255,229,.72),rgba(0,98,143,.9) 47%,rgba(9,20,39,.98) 100%);box-shadow:inset 0 0 24px rgba(255,255,255,.12),0 0 0 7px rgba(69,255,211,.1),0 0 30px rgba(66,255,203,.38),0 0 52px rgba(0,157,255,.25);}
   .system-shell.mobile-preview .mobile-orbit-button.active .mobile-orbit-button-glow{opacity:.85;animation-duration:1.8s;}
@@ -1117,7 +1117,7 @@ html.chalan-wheel-grabbing .wheel-item.active{
   .mobile-orbit-button small,
   .system-shell.mobile-preview .mobile-orbit-button small,
   .system-shell.real-mobile .mobile-orbit-button small{
-    font-size:8.4px!important;
+    font-size:9.9px!important;
   }
   .mobile-orbit-button.active small,
   .system-shell.mobile-preview .mobile-orbit-button.active small,
@@ -1342,7 +1342,7 @@ html.chalan-wheel-grabbing .wheel-item.active{
   .mobile-orbit-button{--angle:calc(var(--dial-index) * 60deg - 90deg);position:absolute!important;left:50%!important;top:50%!important;width:72px!important;height:72px!important;margin:-36px!important;transform:rotate(var(--angle)) translateY(-102px) rotate(calc(-1 * var(--angle)))!important;border-radius:50%!important;border:1px solid rgba(92,195,255,.5)!important;background:radial-gradient(circle at 40% 28%,rgba(22,124,220,.52),rgba(4,26,55,.96) 52%,rgba(2,8,16,.98))!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;color:#eaf7ff!important;box-shadow:inset 0 0 22px rgba(0,0,0,.7),0 0 0 5px rgba(0,132,255,.055),0 0 17px rgba(0,148,255,.2)!important;padding:5px!important}
   .mobile-orbit-button:before,.mobile-orbit-button:after{display:none!important}
   .mobile-orbit-button svg{width:23px!important;height:23px!important;stroke-width:1.7!important;filter:drop-shadow(0 0 7px rgba(91,199,255,.7))!important}
-  .mobile-orbit-button small{position:static!important;translate:none!important;max-width:64px!important;white-space:normal!important;text-align:center!important;font-size:7px!important;line-height:1.05!important;letter-spacing:.05em!important;color:#d8f2ff!important;text-shadow:0 0 8px rgba(54,178,255,.55)!important}
+  .mobile-orbit-button small{position:static!important;translate:none!important;max-width:64px!important;white-space:normal!important;text-align:center!important;font-size:8.5px!important;line-height:1.05!important;letter-spacing:.05em!important;color:#d8f2ff!important;text-shadow:0 0 8px rgba(54,178,255,.55)!important}
   .mobile-orbit-button-glow{position:absolute!important;inset:-8px!important;border-radius:50%!important;opacity:.25!important;background:radial-gradient(circle,rgba(57,176,255,.3),transparent 70%)!important}
   .mobile-orbit-button.active{border-color:#8cddff!important;background:radial-gradient(circle at 42% 30%,rgba(88,197,255,.88),rgba(6,76,151,.96) 48%,rgba(3,15,32,.99))!important;box-shadow:inset 0 0 25px rgba(255,255,255,.12),0 0 0 7px rgba(0,139,255,.1),0 0 29px rgba(0,169,255,.65)!important;transform:rotate(var(--angle)) translateY(-102px) rotate(calc(-1 * var(--angle))) scale(1.08)!important}
   .mobile-orbit-button.active small{color:#fff!important}
@@ -1370,7 +1370,7 @@ html.chalan-wheel-grabbing .wheel-item.active{
   .system-shell.mobile-preview .mobile-orbit-bg{left:50%!important;top:10px!important;width:286px!important;height:286px!important;translate:-50% 0!important}
   .system-shell.mobile-preview .mobile-orbit-track{left:50%!important;top:10px!important;width:286px!important;height:286px!important;translate:-50% 0!important;display:block!important;padding:0!important}
   .system-shell.mobile-preview .mobile-orbit-button{--angle:calc(var(--dial-index) * 60deg - 90deg);position:absolute!important;left:50%!important;top:50%!important;width:72px!important;height:72px!important;margin:-36px!important;transform:rotate(var(--angle)) translateY(-102px) rotate(calc(-1 * var(--angle)))!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important}
-  .system-shell.mobile-preview .mobile-orbit-button small{position:static!important;translate:none!important;white-space:normal!important;text-align:center!important;font-size:7px!important;line-height:1.05!important}
+  .system-shell.mobile-preview .mobile-orbit-button small{position:static!important;translate:none!important;white-space:normal!important;text-align:center!important;font-size:8.5px!important;line-height:1.05!important}
   .system-shell.mobile-preview .mobile-dial-center{display:flex!important;position:absolute;left:50%;top:50%;translate:-50% -50%;width:92px;height:92px;border-radius:50%;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 42% 30%,rgba(28,135,230,.72),rgba(4,28,59,.96) 55%,#020812);border:1px solid rgba(121,216,255,.72);box-shadow:0 0 30px rgba(0,155,255,.42)}
   .system-shell.mobile-preview .mobile-dial-center svg{width:34px}.system-shell.mobile-preview .mobile-dial-center span{font-size:7px;letter-spacing:.18em}
   .system-shell.mobile-preview .mobile-orbit-instruction{top:304px!important}
@@ -1473,7 +1473,7 @@ html.chalan-wheel-grabbing .wheel-item.active{
   .mobile-orbit-button[data-slot="-3"],.mobile-orbit-button[data-slot="3"]{left:50%!important;top:4px!important;transform:translateX(-50%) scale(.68)!important;opacity:.72!important;z-index:3!important}
   .mobile-orbit-button:after{display:none!important}
   .mobile-orbit-button small{
-    top:61px!important;font-size:7.5px!important;letter-spacing:.12em!important;max-width:86px!important;text-align:center!important;
+    top:61px!important;font-size:9.0px!important;letter-spacing:.12em!important;max-width:86px!important;text-align:center!important;
   }
   .mobile-orbit-button.active{
     border-color:#7fffe0!important;
@@ -1609,7 +1609,7 @@ html.chalan-wheel-grabbing .wheel-item.active{
     max-width:92px!important;
     white-space:normal!important;
     text-align:center!important;
-    font-size:7px!important;
+    font-size:8.5px!important;
     line-height:1.05!important;
     letter-spacing:.10em!important;
   }
@@ -1677,7 +1677,7 @@ html.chalan-wheel-grabbing .wheel-item.active{
   .system-shell.mobile-preview .mobile-orbit-button[data-slot="-3"],
   .system-shell.mobile-preview .mobile-orbit-button[data-slot="3"]{left:calc(50% - 24px)!important;top:7px!important;transform:scale(.68)!important;opacity:.76!important;z-index:4!important}
   .system-shell.mobile-preview .mobile-orbit-button:after{display:none!important}
-  .system-shell.mobile-preview .mobile-orbit-button small{position:absolute!important;left:50%!important;top:59px!important;translate:-50% 0!important;width:92px!important;max-width:92px!important;white-space:normal!important;text-align:center!important;font-size:7px!important;line-height:1.05!important;letter-spacing:.10em!important}
+  .system-shell.mobile-preview .mobile-orbit-button small{position:absolute!important;left:50%!important;top:59px!important;translate:-50% 0!important;width:92px!important;max-width:92px!important;white-space:normal!important;text-align:center!important;font-size:8.5px!important;line-height:1.05!important;letter-spacing:.10em!important}
   .system-shell.mobile-preview .mobile-orbit-button.active small{font-size:8px!important;color:#fff!important}
   .system-shell.mobile-preview .mobile-orbit-instruction{position:absolute!important;left:50%!important;top:201px!important;translate:-50% 0!important;font-size:7px!important;letter-spacing:.18em!important}
   .system-shell.mobile-preview .content-panel{position:relative!important;left:auto!important;top:auto!important;width:calc(100% - 30px)!important;margin:0 15px!important;padding:18px 5px 16px!important;height:auto!important;max-height:none!important}
@@ -2049,7 +2049,7 @@ html.chalan-wheel-grabbing .wheel-item.active{
     max-width:88px!important;
     white-space:normal!important;
     text-align:center!important;
-    font-size:6px!important;
+    font-size:7.5px!important;
     line-height:1.05!important;
     letter-spacing:.09em!important;
   }
@@ -2184,7 +2184,7 @@ html.chalan-wheel-grabbing .wheel-item.active{
   .system-shell.mobile-preview .mobile-orbit-button[data-slot="2"]{left:calc(88% - 20px)!important;top:24px!important;transform:scale(.72)!important}
   .system-shell.mobile-preview .mobile-orbit-button[data-slot="-3"],
   .system-shell.mobile-preview .mobile-orbit-button[data-slot="3"]{left:calc(50% - 20px)!important;top:4px!important;transform:scale(.62)!important}
-  .system-shell.mobile-preview .mobile-orbit-button small{top:48px!important;font-size:6px!important}
+  .system-shell.mobile-preview .mobile-orbit-button small{top:48px!important;font-size:7.5px!important}
 }
 
 html:has(.system-shell.mobile-preview),
@@ -2560,7 +2560,7 @@ body:has(.system-shell.real-mobile) #root{
   max-width:88px!important;
   white-space:normal!important;
   text-align:center!important;
-  font-size:6px!important;
+  font-size:7.5px!important;
   line-height:1.05!important;
   letter-spacing:.09em!important;
 }
@@ -3527,7 +3527,7 @@ a.portfolio-website-link:not(.is-disabled):active,
 .system-shell.real-mobile .mobile-orbit-button small,
 .system-shell:not(.force-desktop) .mobile-orbit-button small,
 .system-shell.mobile-preview .mobile-orbit-button small{
-  font-size:6.9px!important;
+  font-size:8.4px!important;
   line-height:1.08!important;
   letter-spacing:.095em!important;
   text-shadow:0 0 10px rgba(78,211,255,.72)!important;
@@ -3963,7 +3963,7 @@ body.chalan-force-desktop #root{
 }
 
 .system-shell:not(.force-desktop).real-mobile .mobile-orbit-button small{
-  font-size:7.9px!important;
+  font-size:9.4px!important;
   transition:
     font-size .72s cubic-bezier(.18,.86,.18,1),
     color .58s ease,
@@ -6005,4 +6005,588 @@ body > .utility-buttons.chalan-mobile-lang-pinned button[hidden]{
   min-height:38px!important;
   padding:0 11px!important;
   font-size:9px!important;
+}
+
+
+/* Panfi clean patch 2026-07-28: only header D sizing and instant Home showcase swaps. */
+.topbar .brand-logo-mark{
+  width:46px!important;
+  min-width:46px!important;
+  max-width:46px!important;
+  height:54px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+.hero-showcase-clean.project-switching,
+.hero-showcase-clean.project-switching *,
+.hero-showcase-clean .project-showcase-screen,
+.hero-showcase-clean .project-main-shot,
+.hero-showcase-clean .project-shot-stack,
+.hero-showcase-clean .project-showcase-caption{
+  animation:none!important;
+  transition:none!important;
+}
+@media(max-width:760px){
+  .topbar .brand-logo-mark,
+  .system-shell.real-mobile .topbar .brand-logo-mark,
+  .system-shell.mobile-preview .topbar .brand-logo-mark{
+    width:38px!important;
+    min-width:38px!important;
+    max-width:38px!important;
+    height:45px!important;
+  }
+}
+
+
+/* Panfi instant showcase patch V3: no fade, blink, drift, blur, scale or transition on Home showcase. */
+.hero-showcase-clean,
+.hero-showcase-clean *,
+.hero-showcase-clean::before,
+.hero-showcase-clean::after,
+.hero-showcase-clean *::before,
+.hero-showcase-clean *::after{
+  animation-duration:0s!important;
+  animation-delay:0s!important;
+  animation-iteration-count:1!important;
+  transition-duration:0s!important;
+  transition-delay:0s!important;
+}
+.hero-showcase-clean .showcase-screen,
+.hero-showcase-clean .project-showcase-screen,
+.hero-showcase-clean .project-main-shot,
+.hero-showcase-clean .project-shot-stack,
+.hero-showcase-clean .project-shot-stack img,
+.hero-showcase-clean .project-showcase-caption{
+  animation:none!important;
+  transition:none!important;
+  opacity:1!important;
+  filter:none!important;
+}
+
+/* ========================================================================== */
+/* PANFI FINAL RESPONSIVE REPAIR — 2026-07-28                                */
+/* Keeps the complete Chalan stylesheet as the source of truth, then applies */
+/* narrow overrides for the four regressions reported by César.              */
+/* ========================================================================== */
+
+/* 1) Never let the desktop mechanical wheel leak into the real mobile view. */
+@media (max-width:760px){
+  .system-shell:not(.force-desktop) .wheel-window,
+  .system-shell:not(.force-desktop) .mechanical-wheel,
+  .system-shell.real-mobile .wheel-window,
+  .system-shell.real-mobile .mechanical-wheel{
+    display:none!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+}
+
+/* 2) Social icons must remain icon-sized even when generic SVG rules exist. */
+.portfolio-social-link{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+}
+.portfolio-social-link > .social-brand-svg,
+.portfolio-social-link .instagram-svg,
+.portfolio-social-link .facebook-svg{
+  display:block!important;
+  width:22px!important;
+  height:22px!important;
+  min-width:22px!important;
+  min-height:22px!important;
+  max-width:22px!important;
+  max-height:22px!important;
+  flex:0 0 22px!important;
+  object-fit:contain!important;
+}
+
+/* 3) Portfolio rows/cards/images retain a controlled proportion. */
+.portfolio-v3-panel,
+.portfolio-v3-grid,
+.portfolio-website-row,
+.portfolio-prototype-row,
+.portfolio-v3-card{
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+.portfolio-v3-card{
+  overflow:hidden!important;
+}
+.real-mini-browser,
+.prototype-mini{
+  width:100%!important;
+  max-width:100%!important;
+  overflow:hidden!important;
+}
+.real-mini-browser img,
+.prototype-mini img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  object-fit:cover!important;
+  object-position:top center!important;
+}
+
+@media (max-width:760px){
+  .portfolio-v3-panel{
+    overflow-x:hidden!important;
+  }
+  .portfolio-v3-grid,
+  .portfolio-expanded-grid{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  .portfolio-website-row,
+  .portfolio-prototype-row{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:18px!important;
+    width:100%!important;
+  }
+  .portfolio-v3-card{
+    width:100%!important;
+    min-height:0!important;
+    padding:12px!important;
+  }
+  .real-mini-browser,
+  .prototype-mini{
+    height:clamp(180px,58vw,300px)!important;
+    aspect-ratio:16 / 10!important;
+  }
+  .portfolio-v3-card h3,
+  .portfolio-v3-card p,
+  .portfolio-v3-card button,
+  .portfolio-website-link{
+    max-width:100%!important;
+    overflow-wrap:anywhere!important;
+  }
+}
+
+/* 4) Restore a deliberate, readable quote follow-up block on all screens. */
+.contact-v3{
+  overflow-x:hidden!important;
+}
+.contact-next-steps{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:8px!important;
+  width:min(460px,92%)!important;
+  max-width:460px!important;
+  margin:18px auto 0!important;
+  padding:18px 20px!important;
+  text-align:left!important;
+  box-sizing:border-box!important;
+}
+.contact-next-steps strong{
+  display:block!important;
+  width:100%!important;
+  margin:0 0 6px!important;
+  text-align:left!important;
+  line-height:1.25!important;
+}
+.contact-next-steps span{
+  display:block!important;
+  width:100%!important;
+  margin:0!important;
+  text-align:left!important;
+  line-height:1.45!important;
+}
+@media (max-width:760px){
+  .contact-next-steps{
+    width:100%!important;
+    max-width:100%!important;
+    padding:16px!important;
+    gap:10px!important;
+  }
+  .contact-next-steps strong{
+    font-size:16px!important;
+  }
+  .contact-next-steps span{
+    font-size:12px!important;
+  }
+}
+
+
+/* ========================================================================== */
+/* PANFI STABLE LAYOUT PATCH — 2026-07-29                                    */
+/* Removes the retired drag interaction and restores Portfolio + Quote.       */
+/* ========================================================================== */
+
+/* Retired drag UI: no hand and no instructional footer copy. */
+.wheel-drag-hand,
+.drag-hint{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+.wheel-control{
+  display:grid!important;
+  grid-template-rows:44px 58px 44px!important;
+  align-items:center!important;
+  justify-items:center!important;
+  gap:7px!important;
+}
+.wheel-nav-label{
+  width:58px!important;
+  height:58px!important;
+  border-radius:50%!important;
+  display:grid!important;
+  place-items:center!important;
+  border:1px solid rgba(121,211,255,.58)!important;
+  background:radial-gradient(circle at 42% 34%,rgba(62,183,255,.34),rgba(5,22,46,.92) 60%,rgba(2,8,18,.98))!important;
+  color:#dff6ff!important;
+  font:800 12px/1 'Barlow Condensed',sans-serif!important;
+  letter-spacing:.18em!important;
+  text-indent:.18em!important;
+  box-shadow:inset 0 0 18px rgba(85,201,255,.08),0 0 20px rgba(31,157,255,.22)!important;
+  user-select:none!important;
+}
+.bottom-bar .section-progress{
+  left:7%!important;
+  right:7%!important;
+}
+
+/* Desktop portfolio stays a balanced 3 + 3 gallery, even in a narrow window. */
+.system-shell:not(.real-mobile) .portfolio-v3-panel{
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+}
+.system-shell:not(.real-mobile) .portfolio-expanded-grid{
+  display:block!important;
+  width:100%!important;
+}
+.system-shell:not(.real-mobile) .portfolio-website-row,
+.system-shell:not(.real-mobile) .portfolio-prototype-row{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:12px!important;
+  width:100%!important;
+}
+.system-shell:not(.real-mobile) .portfolio-v3-card{
+  width:auto!important;
+  min-width:0!important;
+  min-height:0!important;
+  padding:11px!important;
+}
+.system-shell:not(.real-mobile) .real-mini-browser,
+.system-shell:not(.real-mobile) .prototype-mini{
+  width:100%!important;
+  height:132px!important;
+  aspect-ratio:auto!important;
+  overflow:hidden!important;
+}
+.system-shell:not(.real-mobile) .real-mini-browser img,
+.system-shell:not(.real-mobile) .prototype-mini img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:top center!important;
+}
+.system-shell:not(.real-mobile) .portfolio-prototype-head{
+  margin:16px 0 12px!important;
+}
+
+/* Social logos are always icon-sized. */
+.portfolio-social-link .social-brand-svg,
+.portfolio-social-link .instagram-svg,
+.portfolio-social-link .facebook-svg{
+  width:24px!important;
+  height:24px!important;
+  min-width:24px!important;
+  min-height:24px!important;
+  max-width:24px!important;
+  max-height:24px!important;
+  flex:0 0 24px!important;
+}
+
+/* Quote follow-up: heading + four readable steps, never one running sentence. */
+.contact-v3 .contact-next-steps{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:10px 18px!important;
+  width:min(640px,92%)!important;
+  max-width:640px!important;
+  margin:22px auto 0!important;
+  padding:16px 18px!important;
+  text-align:left!important;
+  border-top:1px solid rgba(100,190,255,.18)!important;
+}
+.contact-v3 .contact-next-steps strong{
+  grid-column:1/-1!important;
+  display:block!important;
+  margin:0 0 4px!important;
+  text-align:center!important;
+  font-size:17px!important;
+  line-height:1.25!important;
+}
+.contact-v3 .contact-next-steps span{
+  display:block!important;
+  margin:0!important;
+  padding:7px 10px!important;
+  text-align:left!important;
+  font-size:13px!important;
+  line-height:1.35!important;
+  border:1px solid rgba(105,190,255,.14)!important;
+  border-radius:10px!important;
+  background:rgba(7,18,37,.42)!important;
+}
+
+@media(max-width:760px){
+  .wheel-nav-label{display:none!important}
+  .bottom-bar .section-progress{left:8%!important;right:8%!important}
+  .system-shell.real-mobile .portfolio-website-row,
+  .system-shell.real-mobile .portfolio-prototype-row,
+  .system-shell.mobile-preview .portfolio-website-row,
+  .system-shell.mobile-preview .portfolio-prototype-row{
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+  }
+  .system-shell.real-mobile .real-mini-browser,
+  .system-shell.real-mobile .prototype-mini,
+  .system-shell.mobile-preview .real-mini-browser,
+  .system-shell.mobile-preview .prototype-mini{
+    height:clamp(190px,56vw,280px)!important;
+    aspect-ratio:16/10!important;
+  }
+  .contact-v3 .contact-next-steps{
+    grid-template-columns:1fr!important;
+    width:100%!important;
+    max-width:100%!important;
+    gap:9px!important;
+    margin-top:18px!important;
+    padding:14px 0 0!important;
+  }
+  .contact-v3 .contact-next-steps strong{
+    text-align:left!important;
+    font-size:16px!important;
+  }
+  .contact-v3 .contact-next-steps span{
+    font-size:12px!important;
+  }
+}
+
+/* Impulso Digital v1.1 Update 3 — pricing, support, custom project and call CTA */
+.packages-v3{overflow:auto!important;scrollbar-width:thin;}
+.packages-v3 .package-grid{align-items:stretch;}
+.package-card .package-price{display:flex;align-items:flex-end;gap:10px;margin:2px 0 14px;padding:10px 0 12px;border-bottom:1px solid rgba(145,190,255,.14);}
+.package-card .package-price strong{font-size:clamp(28px,3vw,42px);line-height:.9;letter-spacing:-.04em;color:#f4f9ff;text-shadow:0 0 22px rgba(80,155,255,.18);}
+.package-card.featured .package-price strong{color:#b9a7ff;}
+.package-card .package-price small{font-size:8px;letter-spacing:.18em;color:rgba(210,226,246,.52);padding-bottom:3px;}
+.package-delivery{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:12px;padding:11px 0;border-top:1px solid rgba(145,190,255,.12);border-bottom:1px solid rgba(145,190,255,.12);}
+.package-delivery span{font-size:8px;letter-spacing:.16em;color:rgba(194,215,239,.55);}
+.package-delivery strong{font-size:11px;color:#dcecff;text-align:right;}
+.package-support{margin-top:12px;padding:12px;border:1px solid rgba(92,155,255,.16);background:linear-gradient(135deg,rgba(21,49,88,.2),rgba(10,20,38,.1));border-radius:10px;}
+.package-support>strong{display:block;font-size:9px;letter-spacing:.13em;color:#9fc9ff;margin-bottom:6px;}
+.package-support p,.package-support small{display:block;margin:0;font-size:9px;line-height:1.45;color:rgba(220,232,247,.7);}
+.package-support small{margin-top:5px;color:rgba(220,232,247,.48);}
+.custom-project-invitation{margin-top:16px;padding:18px 20px;border:1px solid rgba(124,159,255,.2);border-radius:14px;background:linear-gradient(115deg,rgba(13,32,60,.78),rgba(38,23,74,.38));display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 20px;align-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.035);}
+.custom-project-invitation>span{grid-column:1;font-size:8px;letter-spacing:.2em;color:#8fbfff;}
+.custom-project-invitation h3{grid-column:1;margin:0;font-size:16px;letter-spacing:.03em;color:#f4f8ff;}
+.custom-project-invitation p{grid-column:1;margin:0;max-width:760px;font-size:10px;line-height:1.55;color:rgba(220,231,247,.68);}
+.custom-project-invitation button{grid-column:2;grid-row:1/4;align-self:center;white-space:nowrap;}
+.floating-call-button{position:fixed;right:22px;bottom:22px;z-index:9999;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 15px;border:1px solid rgba(123,185,255,.4);border-radius:999px;background:rgba(5,16,31,.86);box-shadow:0 10px 34px rgba(0,0,0,.35),0 0 24px rgba(45,128,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#eaf5ff;text-decoration:none;font-size:9px;font-weight:700;letter-spacing:.16em;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;}
+.floating-call-button:hover{transform:translateY(-2px);border-color:rgba(155,208,255,.75);box-shadow:0 12px 38px rgba(0,0,0,.42),0 0 28px rgba(45,128,255,.25);}
+.floating-call-button svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+@media(max-width:760px){.packages-v3{padding-bottom:88px!important}.custom-project-invitation{grid-template-columns:1fr;padding:16px}.custom-project-invitation>span,.custom-project-invitation h3,.custom-project-invitation p,.custom-project-invitation button{grid-column:1;grid-row:auto}.custom-project-invitation button{width:100%;margin-top:7px}.package-delivery{align-items:flex-start;flex-direction:column;gap:5px}.package-delivery strong{text-align:left}.floating-call-button{right:14px;bottom:14px;min-height:42px;padding:0 13px}}
+
+/* Update 3 corrections — layout, custom form, email CTA, larger call button */
+.utility-buttons .desktop-mode,
+.utility-buttons .mobile-mode{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+  line-height:1!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+.packages-v3>.v3-panel-head{display:none!important;}
+.packages-v3{padding-top:18px!important;}
+.packages-v3 .package-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;align-items:stretch!important;gap:16px!important;}
+.packages-v3 .package-card{display:flex!important;flex-direction:column!important;height:auto!important;min-height:0!important;}
+.packages-v3 .package-card ul{flex:1 1 auto!important;}
+.packages-v3 .quote-plan-button{margin-top:14px!important;}
+.shared-support-banner{margin-top:14px;padding:14px 18px;border:1px solid rgba(92,155,255,.22);border-radius:13px;background:linear-gradient(110deg,rgba(15,40,76,.68),rgba(28,20,67,.34));display:grid;grid-template-columns:auto 1fr 1fr;gap:14px 22px;align-items:center;}
+.shared-support-banner strong{font-size:10px;letter-spacing:.13em;color:#9fc9ff;white-space:nowrap;}
+.shared-support-banner p,.shared-support-banner small{margin:0;font-size:9px;line-height:1.45;color:rgba(220,232,247,.7);}
+.shared-support-banner small{color:rgba(220,232,247,.5);padding-left:20px;border-left:1px solid rgba(145,190,255,.12);}
+.floating-call-button{right:26px!important;bottom:24px!important;min-height:58px!important;padding:0 21px!important;gap:11px!important;font-size:11px!important;border-color:rgba(105,188,255,.7)!important;background:linear-gradient(135deg,rgba(5,25,51,.96),rgba(23,55,106,.92))!important;box-shadow:0 14px 42px rgba(0,0,0,.5),0 0 0 0 rgba(58,153,255,.42),0 0 34px rgba(58,153,255,.3)!important;animation:impulsoCallPulse 2.8s ease-in-out infinite!important;}
+.floating-call-button svg{width:22px!important;height:22px!important;}
+.floating-call-button:hover{animation-play-state:paused!important;transform:translateY(-3px) scale(1.03)!important;}
+@keyframes impulsoCallPulse{0%,100%{box-shadow:0 14px 42px rgba(0,0,0,.5),0 0 0 0 rgba(58,153,255,.35),0 0 28px rgba(58,153,255,.22)}50%{box-shadow:0 14px 42px rgba(0,0,0,.5),0 0 0 10px rgba(58,153,255,0),0 0 42px rgba(58,153,255,.38)}}
+.custom-project-modal{position:fixed;inset:0;z-index:10050;display:grid;place-items:center;padding:20px;background:rgba(1,7,16,.74);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity .22s ease;}
+.custom-project-modal.is-visible{opacity:1;}
+.custom-project-dialog{position:relative;width:min(680px,96vw);max-height:88vh;overflow:auto;padding:26px;border:1px solid rgba(115,177,255,.35);border-radius:18px;background:linear-gradient(145deg,rgba(7,22,43,.98),rgba(20,14,50,.98));box-shadow:0 28px 80px rgba(0,0,0,.58),0 0 44px rgba(55,123,255,.18);transform:translateY(10px) scale(.985);transition:transform .22s ease;}
+.custom-project-modal.is-visible .custom-project-dialog{transform:translateY(0) scale(1);}
+.custom-project-close{position:absolute;top:12px;right:14px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.06);color:#dcecff;font-size:24px;cursor:pointer;}
+.custom-project-dialog>small{display:block;color:#83bcff;letter-spacing:.16em;font-size:9px;}
+.custom-project-dialog h3{margin:8px 0 6px;color:#f6f9ff;font-size:24px;}
+.custom-project-dialog>p{margin:0 0 18px;color:rgba(220,232,247,.68);font-size:12px;line-height:1.5;}
+.custom-project-dialog form{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.custom-project-dialog label{display:grid;gap:6px;color:#cfe1f5;font-size:10px;letter-spacing:.04em;}
+.custom-project-dialog label.full{grid-column:1/-1;}
+.custom-project-dialog input,.custom-project-dialog textarea{width:100%;box-sizing:border-box;border:1px solid rgba(129,177,235,.24);border-radius:10px;background:rgba(3,13,27,.7);color:#f4f8ff;padding:12px 13px;font:inherit;outline:none;}
+.custom-project-dialog textarea{resize:vertical;min-height:92px;}
+.custom-project-dialog input:focus,.custom-project-dialog textarea:focus{border-color:rgba(91,175,255,.72);box-shadow:0 0 0 3px rgba(63,137,255,.1);}
+.custom-project-dialog form>button{grid-column:1/-1;min-height:46px;border:1px solid rgba(130,179,255,.5);border-radius:11px;background:linear-gradient(90deg,#176edc,#7a39e8);color:white;font-weight:800;letter-spacing:.1em;cursor:pointer;}
+@media(max-width:760px){.packages-v3 .package-grid{grid-template-columns:1fr!important}.shared-support-banner{grid-template-columns:1fr!important;gap:8px!important}.shared-support-banner small{padding-left:0!important;border-left:0!important}.custom-project-dialog{padding:22px 16px}.custom-project-dialog form{grid-template-columns:1fr}.custom-project-dialog label.full{grid-column:1}.custom-project-dialog form>button{grid-column:1}.floating-call-button{right:14px!important;bottom:14px!important;min-height:52px!important;padding:0 17px!important;font-size:10px!important}}
+
+
+/* Update 3 Correcciones 3 — scoped refinements */
+.seo-plan-note{margin:9px 4px 0;color:rgba(195,216,241,.54);font-size:8px;line-height:1.45;text-align:center;letter-spacing:.035em}
+.custom-project-dialog.quote-form-panel{position:relative!important;inset:auto!important;margin:0!important;width:min(720px,96vw)!important;max-height:88vh!important;overflow:auto!important}
+.custom-project-dialog.quote-form-panel form{display:grid!important;grid-template-columns:1fr 1fr!important;gap:13px!important}
+.custom-project-dialog.quote-form-panel textarea{width:100%;box-sizing:border-box;border:1px solid rgba(129,177,235,.24);border-radius:10px;background:rgba(3,13,27,.7);color:#f4f8ff;padding:12px 13px;font:inherit;outline:none;resize:vertical;min-height:82px}
+.custom-project-dialog.quote-form-panel select{width:100%;box-sizing:border-box;height:44px;border:1px solid rgba(129,177,235,.24);border-radius:10px;background:rgba(3,13,27,.92);color:#f4f8ff;padding:0 12px;font:inherit;outline:none}
+.custom-project-dialog.quote-form-panel .quote-form-status{grid-column:1/-1;min-height:18px;margin:0;color:#9fc9ff;font-size:11px;text-align:center}
+.custom-project-dialog.quote-form-panel button[disabled]{opacity:.62;cursor:wait}
+.portfolio-preview-close{position:absolute!important;top:18px!important;right:18px!important;z-index:12!important}
+.portfolio-preview-frame{position:relative!important}
+.custom-project-close,.quote-form-close{position:absolute!important;top:12px!important;right:12px!important;z-index:12!important}
+@media(max-width:760px){
+  .custom-project-dialog.quote-form-panel form{grid-template-columns:1fr!important}
+  .custom-project-dialog.quote-form-panel label.full,.custom-project-dialog.quote-form-panel form>button,.custom-project-dialog.quote-form-panel .quote-form-status{grid-column:1!important}
+  .portfolio-preview-close{top:10px!important;right:10px!important;width:38px!important;height:38px!important;font-size:24px!important}
+  .custom-project-close,.quote-form-close{top:10px!important;right:10px!important;width:36px!important;height:36px!important}
+  .floating-call-button{max-width:calc(100vw - 28px)!important;white-space:nowrap!important}
+}
+
+/* Panfilo Correcciones 4: custom project layout and compact call label */
+.seo-plan-note{display:none!important}
+.custom-project-invitation{
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:18px 28px!important;
+  padding:24px 30px!important;
+  align-items:center!important;
+}
+.custom-project-copy{min-width:0;display:grid;gap:9px}
+.custom-project-copy>span{font-size:9px;letter-spacing:.22em;color:#8fbfff}
+.custom-project-copy h3{margin:0;max-width:720px;font-size:20px;line-height:1.16;letter-spacing:.025em;color:#f4f8ff}
+.custom-project-copy p{margin:0;max-width:760px;font-size:11px;line-height:1.65;color:rgba(220,231,247,.72)}
+.custom-project-invitation .custom-project-button{
+  grid-column:2!important;grid-row:1!important;align-self:center!important;
+  width:auto!important;max-width:260px!important;min-height:46px!important;
+  padding:0 22px!important;font-size:10px!important;letter-spacing:.11em!important;
+  white-space:nowrap!important;
+}
+@media(max-width:760px){
+  .custom-project-invitation{grid-template-columns:1fr!important;gap:16px!important;padding:20px!important}
+  .custom-project-copy h3{font-size:19px!important;line-height:1.18!important;max-width:none!important}
+  .custom-project-copy p{font-size:11px!important;line-height:1.6!important;max-width:none!important}
+  .custom-project-invitation .custom-project-button{grid-column:1!important;grid-row:auto!important;width:auto!important;max-width:100%!important;justify-self:start!important;margin-top:0!important;padding:0 18px!important;font-size:9px!important}
+}
+
+/* Panfilo Correcciones 5 — compact support, animated custom CTA, modal language safety */
+.shared-support-banner{
+  grid-template-columns:1fr 1fr!important;
+  grid-template-areas:"title title" "included excluded"!important;
+  gap:8px 26px!important;
+  padding:14px 20px!important;
+  align-items:start!important;
+}
+.shared-support-banner strong{
+  grid-area:title!important;
+  white-space:normal!important;
+  font-size:10px!important;
+  line-height:1.25!important;
+}
+.shared-support-banner p{
+  grid-area:included!important;
+  font-size:9px!important;
+  line-height:1.5!important;
+}
+.shared-support-banner small{
+  grid-area:excluded!important;
+  padding-left:22px!important;
+  border-left:1px solid rgba(145,190,255,.14)!important;
+  font-size:9px!important;
+  line-height:1.5!important;
+}
+.custom-project-invitation .custom-project-button{
+  position:relative!important;
+  overflow:hidden!important;
+  max-width:210px!important;
+  min-height:43px!important;
+  padding:0 18px!important;
+  font-size:9px!important;
+  isolation:isolate!important;
+  border:1px solid rgba(103,172,255,.56)!important;
+  background:linear-gradient(135deg,rgba(12,43,87,.95),rgba(55,31,104,.94))!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.3),0 0 18px rgba(74,142,255,.12)!important;
+}
+.custom-project-invitation .custom-project-button::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  z-index:-2;
+  border-radius:inherit;
+  background:conic-gradient(from 0deg,transparent 0 72%,rgba(108,201,255,.95) 80%,rgba(161,96,255,.95) 87%,transparent 94%);
+  animation:impulsoBorderSweep 4.8s linear infinite;
+}
+.custom-project-invitation .custom-project-button::after{
+  content:"";
+  position:absolute;
+  inset:1px;
+  z-index:-1;
+  border-radius:calc(11px - 1px);
+  background:linear-gradient(135deg,rgba(12,43,87,.98),rgba(55,31,104,.98));
+}
+.custom-project-invitation .custom-project-button:hover{
+  transform:translateY(-2px)!important;
+  box-shadow:0 13px 32px rgba(0,0,0,.38),0 0 28px rgba(85,156,255,.26)!important;
+}
+@keyframes impulsoBorderSweep{to{transform:rotate(360deg)}}
+.content-portafolio .portfolio-social-block{transform:translateY(-18px)!important;margin-bottom:-18px!important}
+html.chalan-modal-open .utility-buttons,
+body.chalan-modal-open .utility-buttons{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:translateY(-8px)!important;
+  transition:opacity .18s ease,transform .18s ease,visibility .18s ease!important;
+}
+@media(max-width:760px){
+  .shared-support-banner{grid-template-columns:1fr!important;grid-template-areas:"title" "included" "excluded"!important;gap:7px!important;padding:13px 15px!important}
+  .shared-support-banner small{padding-left:0!important;border-left:0!important;border-top:1px solid rgba(145,190,255,.12)!important;padding-top:7px!important}
+  .custom-project-invitation .custom-project-button{max-width:190px!important;min-height:42px!important}
+  .portfolio-v3-grid > .portfolio-social-block{transform:translateY(-10px)!important;margin-bottom:-10px!important}
+}
+@media (prefers-reduced-motion:reduce){.custom-project-invitation .custom-project-button::before{animation:none!important}}
+
+/* Estable 7 — ajuste exclusivo de la simulación celular en desktop */
+@media (min-width:761px){
+  .system-shell.mobile-preview .custom-project-invitation{
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+    padding:20px!important;
+    align-items:start!important;
+  }
+  .system-shell.mobile-preview .custom-project-copy{
+    width:100%!important;
+    gap:10px!important;
+  }
+  .system-shell.mobile-preview .custom-project-copy h3{
+    max-width:none!important;
+    font-size:19px!important;
+    line-height:1.18!important;
+  }
+  .system-shell.mobile-preview .custom-project-copy p{
+    max-width:none!important;
+    font-size:11px!important;
+    line-height:1.6!important;
+  }
+  .system-shell.mobile-preview .custom-project-invitation .custom-project-button{
+    grid-column:1!important;
+    grid-row:auto!important;
+    justify-self:start!important;
+    width:auto!important;
+    max-width:100%!important;
+    margin-top:0!important;
+    padding:0 18px!important;
+    font-size:9px!important;
+  }
 }

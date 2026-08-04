@@ -40,14 +40,14 @@ La website ya tiene una base técnica sólida para SEO profesional. El score no 
 ## Issues Encontrados
 
 - El sitio es una experiencia SPA de una sola página. Google puede indexarla, pero para SEO competitivo sería mejor crear URLs reales por sección cuando el sitio crezca.
-- El dominio final todavía no está confirmado. Se usó `https://impulsodigitalmex.com/` como URL preparada.
+- El dominio final todavía no está confirmado. Se usó `https://impulsodigitalglobal.com/` como URL preparada.
 - GA4 y Search Console están en placeholder, listos para reemplazarse.
 - El contenido actual es más comercial/visual que SEO. Está bien para esta etapa, pero no está optimizado por keywords, ciudad o intención de búsqueda.
 - Algunas imágenes son capturas grandes; conviene convertirlas a WebP/AVIF más adelante para mejorar Core Web Vitals.
 
 ## Recomendaciones Técnicas
 
-- Reemplazar `https://impulsodigitalmex.com/` por el dominio final si cambia.
+- Reemplazar `https://impulsodigitalglobal.com/` por el dominio final si cambia.
 - Reemplazar `GOOGLE_SEARCH_CONSOLE_VERIFICATION_PENDING` con el token real.
 - Agregar GA4 cuando exista el ID final.
 - Convertir imágenes grandes a WebP/AVIF.

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://impulsodigitalmex.com/sitemap.xml
+Sitemap: https://impulsodigitalglobal.com/sitemap.xml

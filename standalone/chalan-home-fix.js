@@ -2,6 +2,22 @@
   if (window.__chalanHomeFixLoaded) return;
   window.__chalanHomeFixLoaded = true;
 
+
+  // PANFI stable UI cleanup: the drag interaction was retired.
+  const removeRetiredWheelUi = () => {
+    document.querySelectorAll('.wheel-drag-hand, .drag-hint').forEach(element => element.remove());
+    document.querySelectorAll('.wheel-control').forEach(control => {
+      if (!control.querySelector('.wheel-nav-label')) {
+        const label = document.createElement('div');
+        label.className = 'wheel-nav-label';
+        label.textContent = 'NAV';
+        label.setAttribute('aria-hidden', 'true');
+        const down = control.querySelector('.wheel-step-down');
+        control.insertBefore(label, down || null);
+      }
+    });
+  };
+
   const projects = [
     {
       name: 'KT STUDIOS',
@@ -110,7 +126,7 @@
   const prototypes = [
     { name: 'LA CEIBA & EL COMAL', type: 'RESTAURANTE • FOOD TRUCK', typeEn: 'RESTAURANT • FOOD TRUCK', tone: 'prototype-blue', image: './standalone/project-assets/prototype-la-ceiba.png' },
     { name: 'PASITOS DAYCARE', type: 'DAYCARE • INSCRIPCIONES', typeEn: 'DAYCARE • ENROLLMENT', tone: 'prototype-cyan', image: './standalone/project-assets/prototype-pasitos-daycare.png' },
-    { name: 'SARAH HODGSON', type: 'DOG TRAINING • EDUCACIÓN', typeEn: 'DOG TRAINING • EDUCATION', tone: 'prototype-violet', image: './standalone/project-assets/prototype-sarah-dogs.png' },
+    { name: 'CARMEL ART', type: 'DOG TRAINING • EDUCACIÓN', typeEn: 'DOG TRAINING • EDUCATION', tone: 'prototype-violet', image: './standalone/project-assets/prototype-sarah-dogs.png' },
     { name: 'Construcción Local', type: 'CONTRACTOR • LEADS', typeEn: 'CONTRACTOR • LEADS', tone: 'prototype-steel' },
     { name: 'Fitness Coach', type: 'FITNESS • BRAND', tone: 'prototype-neon' },
     { name: 'Auto Detailing', type: 'SERVICE • BOOKING', tone: 'prototype-indigo' },
@@ -154,7 +170,7 @@
     },
     portafolio: {
       kicker: 'PORTAFOLIO',
-      title: 'NO USAMOS PLANTILLAS.<br>DISEÑAMOS <b>IDENTIDADES.</b>',
+      title: 'NO UTILIZAMOS PLANTILLAS.<br><b>CREAMOS IDENTIDADES DIGITALES.</b>',
       description: 'Cada website nace desde cero para reflejar la identidad de cada negocio. No reutilizamos plantillas porque ninguna empresa es igual a otra.',
       features: [
         ['IDENTIDAD PROPIA', 'Cada website se diseña alrededor del negocio.'],
@@ -197,7 +213,7 @@
     },
     portafolio: {
       kicker: 'PORTFOLIO',
-      title: 'WE DO NOT USE TEMPLATES.<br>WE DESIGN <b>IDENTITIES.</b>',
+      title: 'WE DO NOT USE TEMPLATES.<br><b>WE CREATE DIGITAL IDENTITIES.</b>',
       description: 'Every website starts from scratch to reflect each business identity. We do not reuse templates because no two companies are the same.',
       features: [
         ['OWN IDENTITY', 'Every website is designed around the business.'],
@@ -714,7 +730,7 @@
         <div class="contact-glow"></div>
         <div class="v3-panel-head centered"><span>IMPULSO / ${english ? 'QUOTE' : 'COTIZACIÓN'}</span><strong>${english ? 'REQUEST YOUR QUOTE' : 'SOLICITA TU COTIZACIÓN'}</strong></div>
         <p class="contact-copy">${english ? 'Tell us about your business and we will help you choose the best way to get started.' : 'Cuéntanos sobre tu negocio y te ayudaremos a elegir la mejor forma de comenzar.'}</p>
-        <a class="contact-email-button" href="mailto:impulsodigitalmex@gmail.com?subject=${english ? 'Impulso%20Digital%20Quote' : 'Cotizaci%C3%B3n%20Impulso%20Digital'}">${english ? 'SEND EMAIL' : 'ENVIAR CORREO'}</a>
+        <a class="contact-email-button" href="mailto:daniel@impulsodigitalglobal.com?subject=${english ? 'Impulso%20Digital%20Quote' : 'Cotizaci%C3%B3n%20Impulso%20Digital'}">${english ? 'REQUEST A QUOTE' : 'SOLICITAR COTIZACIÓN'}</a>
         <p class="contact-free-note">${english ? 'The quote is free and there is no commitment.' : 'La cotización es gratuita y sin compromiso.'}</p>
         <div class="contact-next-steps">
           <strong>${english ? 'What happens next?' : '¿Qué sucede después?'}</strong>
@@ -997,15 +1013,16 @@
 
     const screen = document.querySelector('.project-showcase-screen');
     if (screen) screen.dataset.chalanProject = '';
-    const panel = document.querySelector('.hero-showcase-clean');
-    panel?.classList.remove('project-switching');
-    void panel?.offsetWidth;
-    panel?.classList.add('project-switching');
     renderShowcase();
   };
 
   document.addEventListener('pointerdown', handleProjectSwitch, true);
   document.addEventListener('click', handleProjectSwitch, true);
+
+  const setModalUtilityVisibility = hidden => {
+    document.documentElement.classList.toggle('chalan-modal-open', Boolean(hidden));
+    document.body?.classList.toggle('chalan-modal-open', Boolean(hidden));
+  };
 
   const openPortfolioPreview = (src, title) => {
     if (!src) return;
@@ -1020,6 +1037,7 @@
       </div>
     `;
     document.body.appendChild(modal);
+    setModalUtilityVisibility(true);
     window.requestAnimationFrame(() => modal.classList.add('is-visible'));
   };
 
@@ -1027,7 +1045,7 @@
     const modal = document.querySelector('.portfolio-preview-modal');
     if (!modal) return;
     modal.classList.remove('is-visible');
-    window.setTimeout(() => modal.remove(), 260);
+    window.setTimeout(() => { modal.remove(); setModalUtilityVisibility(false); }, 260);
   };
 
   document.addEventListener('click', event => {
@@ -1067,6 +1085,9 @@
 
   document.addEventListener('click', event => {
     const planButton = event.target.closest?.('.quote-plan-button');
+    const customButton = event.target.closest?.('.custom-project-button');
+    const customClose = event.target.closest?.('.custom-project-close');
+    const customBackdrop = event.target.classList?.contains('custom-project-modal');
     const closeButton = event.target.closest?.('.quote-form-close');
     const form = event.target.closest?.('.quote-form-panel form');
 
@@ -1077,9 +1098,23 @@
       showQuoteForm(planButton.dataset.plan || 'Website Starter');
     }
 
+    if (customButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      showQuoteForm('Proyecto personalizado');
+    }
+
+    if (customClose || customBackdrop) {
+      event.preventDefault();
+      const modal = document.querySelector('.custom-project-modal');
+      modal?.classList.remove('is-visible');
+      window.setTimeout(() => { modal?.remove(); setModalUtilityVisibility(false); }, 220);
+    }
+
     if (closeButton) {
       event.preventDefault();
-      closeButton.closest('.quote-form-panel')?.remove();
+      closeButton.closest('.custom-project-modal')?.remove();
+      setModalUtilityVisibility(false);
     }
 
     if (form && event.type === 'submit') {
@@ -1087,23 +1122,52 @@
     }
   }, true);
 
-  document.addEventListener('submit', event => {
-    const form = event.target.closest?.('.quote-form-panel form');
+  document.addEventListener('submit', async event => {
+    const form = event.target.closest?.('[data-quote-form]');
     if (!form) return;
-
     event.preventDefault();
-    const data = new FormData(form);
+    const button = form.querySelector('button[type="submit"]');
+    const status = form.querySelector('.quote-form-status');
     const english = isEnglish();
-    const subject = encodeURIComponent(`${english ? 'Request' : 'Solicitud'} ${data.get('plan') || 'Website'}`);
-    const body = encodeURIComponent([
-      `${english ? 'Name' : 'Nombre'}: ${data.get('nombre') || ''}`,
-      `${english ? 'Phone' : 'Teléfono'}: ${data.get('telefono') || ''}`,
-      `Email: ${data.get('email') || ''}`,
-      `Plan: ${data.get('plan') || ''}`,
-      `${english ? 'Business type' : 'Tipo de negocio'}: ${data.get('negocio') || ''}`,
-    ].join('\n'));
-    const recipient = 'impulsodigitalmex@gmail.com';
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    const original = button?.textContent || '';
+    if (button) {
+      button.disabled = true;
+      button.textContent = english ? 'SENDING…' : 'ENVIANDO…';
+    }
+    if (status) status.textContent = '';
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/daniel@impulsodigitalglobal.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form),
+      });
+      if (!response.ok) throw new Error('Form submission failed');
+      if (status) status.textContent = english ? 'Your request was sent successfully.' : 'Tu solicitud fue enviada correctamente.';
+      form.reset();
+      window.setTimeout(() => {
+        const modal = form.closest('.custom-project-modal');
+        modal?.classList.remove('is-visible');
+        window.setTimeout(() => { modal?.remove(); setModalUtilityVisibility(false); }, 220);
+      }, 1400);
+    } catch (error) {
+      if (status) status.textContent = english
+        ? 'We could not send the request. Please email daniel@impulsodigitalglobal.com.'
+        : 'No pudimos enviar la solicitud. Escríbenos a daniel@impulsodigitalglobal.com.';
+    } finally {
+      if (button) {
+        button.disabled = false;
+        button.textContent = original;
+      }
+    }
+  }, true);
+
+
+  document.addEventListener('click', event => {
+    const contactButton = event.target.closest?.('.contact-cta, .contact-email-button');
+    if (!contactButton) return;
+    event.preventDefault();
+    event.stopPropagation();
+    showQuoteForm('Todavía no estoy seguro');
   }, true);
 
   const setInicioCopy = () => {
@@ -1264,37 +1328,45 @@
   };
 
   const showQuoteForm = selectedPlan => {
-    const panel = document.querySelector('.packages-v3');
-    if (!panel) return;
-
-    panel.querySelector('.quote-form-panel')?.remove();
-    const formPanel = document.createElement('div');
-    formPanel.className = 'quote-form-panel';
+    document.querySelector('.custom-project-modal')?.remove();
     const english = isEnglish();
-    formPanel.innerHTML = `
-      <button class="quote-form-close" type="button" aria-label="${english ? 'Close' : 'Cerrar'}">×</button>
-      <div class="quote-form-head">
-        <small>IMPULSO / ${english ? 'REQUEST' : 'SOLICITUD'}</small>
-        <strong>${english ? 'Request your quote' : 'Solicita tu cotización'}</strong>
-        <span>${english ? 'Only the basics so we can contact you.' : 'Solo lo básico para poder contactarte.'}</span>
-      </div>
-      <form>
-        <label>${english ? 'Name' : 'Nombre'}<input name="nombre" type="text" autocomplete="name" required></label>
-        <label>${english ? 'Phone number' : 'Número de teléfono'}<input name="telefono" type="tel" autocomplete="tel" required></label>
-        <label>Email<input name="email" type="email" autocomplete="email" required></label>
-        <label>${english ? 'Plan' : 'Plan'}
-          <select name="plan" required>
-            <option${selectedPlan.includes('Starter') ? ' selected' : ''}>Website Starter</option>
-            <option${selectedPlan.includes('PRO') || selectedPlan.includes('Pro') ? ' selected' : ''}>Website Pro</option>
-          </select>
-        </label>
-        <label class="full">${english ? 'What type of business is this website for?' : '¿Para qué tipo de negocio sería tu website?'}<input name="negocio" type="text" placeholder="${english ? 'Ex. restaurant, barber shop, artist, landscaping...' : 'Ej. restaurante, barbería, artista, landscaping...'}" required></label>
-        <button type="submit">${english ? 'SEND REQUEST' : 'ENVIAR SOLICITUD'}</button>
-      </form>
-    `;
-    panel.appendChild(formPanel);
-    formPanel.querySelector('input')?.focus({ preventScroll: true });
+    const options = [
+      ['Website Starter', english ? 'Website Starter' : 'Website Starter'],
+      ['Website Pro', english ? 'Website Pro' : 'Website Pro'],
+      ['Proyecto personalizado', english ? 'Custom project' : 'Proyecto personalizado'],
+      ['Todavía no estoy seguro', english ? 'I am not sure yet' : 'Todavía no estoy seguro'],
+    ];
+    const normalizedPlan = selectedPlan || 'Todavía no estoy seguro';
+    const modal = document.createElement('div');
+    modal.className = 'custom-project-modal quote-modal';
+    modal.innerHTML = `
+      <div class="custom-project-dialog quote-form-panel" role="dialog" aria-modal="true" aria-labelledby="quote-form-title">
+        <button class="quote-form-close custom-project-close" type="button" aria-label="${english ? 'Close' : 'Cerrar'}">×</button>
+        <small>IMPULSO / ${english ? 'QUOTE' : 'COTIZACIÓN'}</small>
+        <h3 id="quote-form-title">${english ? 'Request your quote' : 'Solicita tu cotización'}</h3>
+        <p>${english ? 'Choose a plan or tell us what your business needs.' : 'Selecciona un plan o cuéntanos qué necesita tu negocio.'}</p>
+        <form data-quote-form>
+          <label>${english ? 'Full name' : 'Nombre completo'}<input name="nombre" type="text" autocomplete="name" required></label>
+          <label>${english ? 'Email address' : 'Correo electrónico'}<input name="email" type="email" autocomplete="email" required></label>
+          <label>${english ? 'Business name' : 'Nombre del negocio'}<input name="empresa" type="text" autocomplete="organization" required></label>
+          <label>${english ? 'Selected plan' : 'Plan seleccionado'}
+            <select name="plan" required>${options.map(([value,label]) => `<option value="${value}"${normalizedPlan.toLowerCase().includes(value.toLowerCase().replace('proyecto ','').replace('todavía ','').slice(0,9)) || normalizedPlan === value ? ' selected' : ''}>${label}</option>`).join('')}</select>
+          </label>
+          <label class="full">${english ? 'What does your business do?' : '¿A qué se dedica tu negocio?'}<textarea name="actividad" rows="3" placeholder="${english ? 'Briefly describe what your business does.' : 'Describe brevemente a qué se dedica tu negocio.'}" required></textarea></label>
+          <label class="full">${english ? 'What would you like to achieve with your website?' : '¿Qué te gustaría lograr con tu website?'}<textarea name="objetivo" rows="4" required></textarea></label>
+          <label class="full">${english ? 'Examples or references (optional)' : 'Ejemplos o referencias (opcional)'}<input name="referencias" type="text" placeholder="${english ? 'Links or names of websites you like.' : 'Links o nombres de websites que te gustan.'}"></label>
+          <input type="hidden" name="_subject" value="${english ? 'New quote request - Impulso Digital' : 'Nueva solicitud de cotización - Impulso Digital'}">
+          <button type="submit">${english ? 'SEND QUOTE REQUEST' : 'ENVIAR SOLICITUD DE COTIZACIÓN'}</button>
+          <p class="quote-form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>`;
+    document.body.appendChild(modal);
+    setModalUtilityVisibility(true);
+    requestAnimationFrame(() => modal.classList.add('is-visible'));
+    modal.querySelector('input')?.focus({ preventScroll: true });
   };
+
+  const showCustomProjectForm = () => showQuoteForm('Proyecto personalizado');
 
   const renderPackages = () => {
     const panel = document.querySelector('.packages-v3');
@@ -1303,42 +1375,52 @@
     if (!panel || panel.dataset.chalanPlans === langKey) return;
 
     panel.dataset.chalanPlans = langKey;
+    const check = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+    const starterItems = english
+      ? ['Professional one-page website','Up to 6 sections','Responsive on computers, tablets, and phones','Contact form','Basic setup to appear on Google','Social media integration']
+      : ['Website profesional de una sola página','Hasta 6 secciones','Adaptada a computadoras, tablets y celulares','Formulario de contacto','Configuración básica para aparecer en Google','Integración con redes sociales'];
+    const proItems = english
+      ? ['Website with up to 6 main pages','Better organization of services and content','Premium animations and interactions','A personalized experience for your business','Improved setup for search engines','Greater focus on turning visits into customers']
+      : ['Website de hasta 6 páginas principales','Mayor organización de servicios y contenido','Animaciones e interacciones premium','Experiencia personalizada para tu negocio','Configuración mejorada para buscadores','Mayor enfoque en convertir visitas en clientes'];
+    const supportText = english
+      ? 'Includes corrections for spelling errors, broken links, incorrect images, contact details, and technical issues related to the agreed project.'
+      : 'Incluye corrección de errores ortográficos, enlaces que no funcionen, imágenes incorrectas, datos de contacto y problemas técnicos relacionados con lo acordado en el proyecto.';
+    const supportLimit = english
+      ? 'Also includes minor text or image changes. It does not include new pages, features, additional sections, or redesigns.'
+      : 'No incluye nuevas páginas, funciones, secciones adicionales ni rediseños.';
+
     panel.innerHTML = `
-      <div class="v3-panel-head">
-        <span>IMPULSO / ${english ? 'PLANS' : 'PLANES'}</span>
-        <i>${english ? '2 OPTIONS' : '2 OPCIONES'}</i>
-      </div>
       <div class="package-grid">
         <div class="package-card">
           <div class="package-top"><span>01</span><em>${english ? 'IDEAL TO GET STARTED' : 'IDEAL PARA COMENZAR'}</em></div>
           <h2>WEBSITE STARTER</h2>
-          <ul>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Custom design' : 'Diseño personalizado'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Up to 5 sections' : 'Hasta 5 secciones'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Perfect for mobile and desktop' : 'Perfecta para celular y computadora'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Receive messages from new customers' : 'Recibe mensajes de nuevos clientes'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Optimized to appear on Google' : 'Optimizada para aparecer en Google'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Website launch' : 'Publicación de la website'}</li>
-          </ul>
+          <div class="package-price"><strong>$600</strong><small>${english ? 'PROJECT PRICE' : ''}</small></div>
+          <ul>${starterItems.map(item => `<li>${check}${item}</li>`).join('')}</ul>
+          <div class="package-delivery"><span>${english ? 'ESTIMATED DELIVERY TIME' : 'TIEMPO ESTIMADO DE ENTREGA'}</span><strong>${english ? '10–15 business days' : '10–15 días hábiles'}</strong></div>
           <button class="quote-plan-button" type="button" data-plan="Website Starter">${english ? 'REQUEST A QUOTE' : 'SOLICITAR COTIZACIÓN'}</button>
         </div>
         <div class="package-card featured">
           <div class="package-top"><span>02</span><em>${english ? 'IDEAL FOR GROWING BUSINESSES' : 'IDEAL PARA NEGOCIOS EN CRECIMIENTO'}</em></div>
           <h2>WEBSITE PRO</h2>
-          <ul>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Everything in Starter' : 'Todo lo del Starter'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'More pages for your business' : 'Más páginas para tu negocio'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Premium animations' : 'Animaciones premium'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Work gallery' : 'Galería de trabajos'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Testimonials' : 'Testimonios'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Google Maps integration' : 'Integración con Google Maps'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Visit analytics' : 'Estadísticas de visitas'}</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${english ? 'Better positioning on Google.' : 'Mejor posicionamiento en Google.'}</li>
-          </ul>
+          <div class="package-price"><strong>$1200</strong><small>${english ? 'PROJECT PRICE' : ''}</small></div>
+          <ul>${proItems.map(item => `<li>${check}${item}</li>`).join('')}</ul>
+          <div class="package-delivery"><span>${english ? 'ESTIMATED DELIVERY TIME' : 'TIEMPO ESTIMADO DE ENTREGA'}</span><strong>${english ? '15–20 business days' : '15–20 días hábiles'}</strong></div>
           <button class="quote-plan-button" type="button" data-plan="Website PRO">${english ? 'REQUEST A QUOTE' : 'SOLICITAR COTIZACIÓN'}</button>
         </div>
       </div>
-      <div class="custom-note"><strong>${english ? 'NEED SOMETHING DIFFERENT?' : '¿NECESITAS ALGO DIFERENTE?'}</strong><span>${english ? 'We also develop custom solutions.' : 'También desarrollamos soluciones personalizadas.'}</span></div>
+      <section class="shared-support-banner">
+        <strong>${english ? '30 DAYS OF SUPPORT INCLUDED' : '30 DÍAS DE SOPORTE INCLUIDOS'}</strong>
+        <p>${supportText}</p>
+        <small>${supportLimit}</small>
+      </section>
+      <section class="custom-project-invitation" data-future-fields="business-type,products-services,competition,mission,vision,reference-websites,social-media,project-goals">
+        <div class="custom-project-copy">
+          <span>${english ? 'CUSTOM PROJECT' : 'PROYECTO PERSONALIZADO'}</span>
+          <h3>${english ? 'DOES YOUR PROJECT NOT FIT THESE PLANS?' : '¿TU PROYECTO NO ENCAJA EN ESTOS PLANES?'}</h3>
+          <p>${english ? 'Tell us what you need and we will prepare a custom proposal for your business. Ideal for special projects or needs beyond our standard plans.' : 'Cuéntanos qué necesitas y prepararemos una propuesta personalizada para tu negocio. Ideal para proyectos especiales o necesidades fuera de nuestros planes estándar.'}</p>
+        </div>
+        <button class="custom-project-button" type="button">${english ? 'DESIGN MY PROJECT' : 'DISEÑAR MI PROYECTO'}</button>
+      </section>
     `;
   };
 
@@ -1417,9 +1499,6 @@
     selectedProjectShotIndex = nextShotIndex;
     const screen = document.querySelector('.project-showcase-screen');
     if (screen) screen.dataset.chalanProject = '';
-    panel.classList.remove('project-switching');
-    void panel.offsetWidth;
-    panel.classList.add('project-switching');
     renderShowcase();
   }, 5400);
 
@@ -1439,4 +1518,44 @@
   }, true);
   observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'data-slot'] });
   window.setInterval(run, 700);
+
+
+  removeRetiredWheelUi();
+  window.setInterval(removeRetiredWheelUi, 800);
+
+  const ensureFloatingCallButton = () => {
+    let button = document.querySelector('.floating-call-button');
+    if (!button) {
+      button = document.createElement('a');
+      button.className = 'floating-call-button';
+      button.href = 'tel:+18312881019';
+      button.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg><span></span>';
+      document.body.appendChild(button);
+    }
+    button.setAttribute('aria-label', isEnglish() ? 'Call Impulso Digital' : 'Llamar a Impulso Digital');
+    const label = button.querySelector('span');
+    if (label) label.textContent = isEnglish() ? 'CALL US' : 'LLÁMANOS';
+  };
+
+  ensureFloatingCallButton();
+
+  // Keep the floating call label synchronized with the active site language.
+  const floatingCallLanguageObserver = new MutationObserver(() => {
+    ensureFloatingCallButton();
+  });
+  floatingCallLanguageObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['lang'],
+  });
+
+  // Some language controls update React state before the html lang attribute is painted.
+  // Recheck after clicks without changing the button's position, size, or animation.
+  document.addEventListener('click', event => {
+    const control = event.target.closest?.('button');
+    const text = (control?.textContent || '').trim().toUpperCase();
+    if (text === 'ES' || text === 'EN') {
+      window.requestAnimationFrame(() => ensureFloatingCallButton());
+      window.setTimeout(ensureFloatingCallButton, 80);
+    }
+  }, true);
 })();

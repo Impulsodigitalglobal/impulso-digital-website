@@ -44,7 +44,7 @@ const contentEs = {
   },
   portafolio: {
     kicker: 'PORTAFOLIO',
-    title: <>NO USAMOS PLANTILLAS.<br />DISEÑAMOS <b>IDENTIDADES.</b></>,
+    title: <>TU NEGOCIO NO NECESITA OTRA PLANTILLA.<br />NECESITA UNA PRESENCIA DIGITAL <b>CONSTRUIDA PARA DESTACAR.</b></>,
     description: <>Cada website nace desde cero para reflejar la identidad de cada negocio. No reutilizamos plantillas porque ninguna empresa es igual a otra.</>,
   },
   proceso: {
@@ -136,7 +136,7 @@ function MechanicalWheel({ active, onChange, sections, lang }) {
     </motion.div>
     <div className="wheel-control" aria-label={lang === 'es' ? 'Controles de la rueda' : 'Wheel controls'}>
       <button type="button" className="wheel-step wheel-step-up" aria-label={lang === 'es' ? 'Mover rueda hacia arriba' : 'Move wheel up'} onClick={() => stepWheel(-1)} disabled={active === sections[0].id}><ChevronUp /></button>
-      <button type="button" className="wheel-drag-hand" aria-label={lang === 'es' ? 'Avanzar la rueda' : 'Advance the wheel'} onClick={activateHand}><Hand /></button>
+      <div className="wheel-nav-label" aria-hidden="true">NAV</div>
       <button type="button" className="wheel-step wheel-step-down" aria-label={lang === 'es' ? 'Mover rueda hacia abajo' : 'Move wheel down'} onClick={() => stepWheel(1)} disabled={active === sections[sections.length - 1].id}><ChevronDown /></button>
     </div>
   </div>;
@@ -180,22 +180,18 @@ function HeroShowcase({ onNavigate, lang }) {
     { name:'LUIS LANDSCAPING', url:'luislandscaping.com', type:'LANDSCAPING • MOBILE', tone:'landscape', headline:'Outdoor spaces built to last.', shots:['./standalone/project-assets/luis-home.png','./standalone/project-assets/luis-services.png','./standalone/project-assets/luis-gallery.png'] },
   ];
   const [current, setCurrent] = useState(0);
-  useEffect(() => {
-    const timer = setInterval(() => setCurrent(value => (value + 1) % projects.length), 4200);
-    return () => clearInterval(timer);
-  }, [projects.length]);
   const project = projects[current];
  return <motion.aside className="v3-panel hero-showcase hero-showcase-clean" {...panelMotion}>
     <div className="showcase-intro"><span>{lang === 'es' ? 'ASÍ PODRÍA VERSE TU NEGOCIO' : 'THIS IS HOW YOUR BUSINESS COULD LOOK'}</span><i>{String(current + 1).padStart(2,'0')} / {String(projects.length).padStart(2,'0')}</i></div>
     <div className="showcase-monitor premium-monitor">
       <div className="showcase-top"><span/><span/><span/><small>{project.url}</small></div>
-      <AnimatePresence mode="wait"><motion.div key={project.name} className={`showcase-screen project-showcase-screen ${project.tone}`} initial={{opacity:0,scale:.985}} animate={{opacity:1,scale:1}} exit={{opacity:0,scale:1.01}} transition={{duration:.45}}>
+      <div className={`showcase-screen project-showcase-screen ${project.tone}`}>
         <img className="project-main-shot" src={project.shots[0]} alt={`${project.name} website`} />
         <div className="project-showcase-caption"><small>{project.type}</small><strong>{project.name}</strong><span>{project.headline}</span></div>
         <div className="project-shot-stack">
           {project.shots.slice(1).map((shot,index)=><img key={shot} src={shot} alt={`${project.name} captura ${index + 2}`} />)}
         </div>
-      </motion.div></AnimatePresence>
+      </div>
       <div className="showcase-base"/>
     </div>
     <div className="showcase-selector">{projects.map((item,index)=><button key={item.name} className={index===current?'active':''} onClick={() => setCurrent(index)} aria-label={`Mostrar ${item.name}`}><span/>{item.name}</button>)}</div>
@@ -210,10 +206,35 @@ function BenefitsPanel({ lang }) {
 }
 
 function PackagesPanel({ onNavigate, lang }) {
-  const plansEs=[{name:'WEBSITE STARTER',tag:'IDEAL PARA COMENZAR',items:['Diseño personalizado','Hasta 5 secciones','Perfecta para celular y computadora','Recibe mensajes de nuevos clientes','Optimizada para aparecer en Google','Publicación de la website']},{name:'WEBSITE PRO',tag:'IDEAL PARA NEGOCIOS EN CRECIMIENTO',featured:true,items:['Todo lo del Starter','Más páginas para tu negocio','Animaciones premium','Galería de trabajos','Testimonios','Integración con Google Maps','Estadísticas de visitas','Mejor posicionamiento en Google.']}];
-  const plansEn=[{name:'WEBSITE STARTER',tag:'IDEAL TO GET STARTED',items:['Custom design','Up to 5 sections','Perfect for phone and computer','Receive messages from new customers','Optimized to appear on Google','Website launch']},{name:'WEBSITE PRO',tag:'IDEAL FOR GROWING BUSINESSES',featured:true,items:['Everything in Starter','More pages for your business','Premium animations','Work gallery','Testimonials','Google Maps integration','Visit statistics','Better positioning on Google.']}];
+  const plansEs=[
+    {name:'WEBSITE STARTER',tag:'IDEAL PARA COMENZAR',price:'$600',items:['Website profesional de una sola página','Hasta 6 secciones','Adaptada a computadoras, tablets y celulares','Formulario de contacto','Configuración básica para aparecer en Google','Integración con redes sociales']},
+    {name:'WEBSITE PRO',tag:'IDEAL PARA NEGOCIOS EN CRECIMIENTO',price:'$1200',featured:true,items:['Website de hasta 6 páginas principales','Mayor organización de servicios y contenido','Animaciones e interacciones premium','Experiencia personalizada para tu negocio','Configuración mejorada para buscadores','Mayor enfoque en convertir visitas en clientes']}
+  ];
+  const plansEn=[
+    {name:'WEBSITE STARTER',tag:'IDEAL TO GET STARTED',price:'$600',items:['Professional website','Responsive design for computers, tablets, and phones','Contact form','Basic SEO optimization','Social media integration']},
+    {name:'WEBSITE PRO',tag:'IDEAL FOR GROWING BUSINESSES',price:'$1200',featured:true,items:['Everything included in Starter','More sections and content','Premium animations and interactions','Fully personalized experience','Improved SEO optimization','Greater focus on customer conversion']}
+  ];
   const plans = lang === 'en' ? plansEn : plansEs;
-  return <motion.aside className="v3-panel packages-v3" {...panelMotion}><div className="v3-panel-head"><span>{lang === 'es' ? 'IMPULSO / PLANES' : 'IMPULSO / PLANS'}</span><i>{lang === 'es' ? '2 OPCIONES' : '2 OPTIONS'}</i></div><div className="package-grid">{plans.map((p,i)=><div className={`package-card ${p.featured?'featured':''}`} key={p.name}><div className="package-top"><span>0{i+1}</span><em>{p.tag}</em></div><h2>{p.name}</h2><ul>{p.items.map(x=><li key={x}><BadgeCheck/>{x}</li>)}</ul><button onClick={() => onNavigate('contacto')}>{lang === 'es' ? 'SOLICITAR COTIZACIÓN' : 'REQUEST A QUOTE'} <ChevronRight /></button></div>)}</div><div className="custom-note"><strong>{lang === 'es' ? '¿NECESITAS ALGO DIFERENTE?' : 'NEED SOMETHING DIFFERENT?'}</strong><span>{lang === 'es' ? 'También desarrollamos soluciones personalizadas.' : 'We also develop custom solutions.'}</span></div></motion.aside>;
+  return <motion.aside className="v3-panel packages-v3" {...panelMotion}>
+    <div className="v3-panel-head"><span>{lang === 'es' ? 'IMPULSO / PLANES' : 'IMPULSO / PLANS'}</span><i>{lang === 'es' ? '2 OPCIONES' : '2 OPTIONS'}</i></div>
+    <div className="package-grid">
+      {plans.map((p,i)=><div className={`package-card ${p.featured?'featured':''}`} key={p.name}>
+        <div className="package-top"><span>0{i+1}</span><em>{p.tag}</em></div>
+        <h2>{p.name}</h2>
+        <div className="package-price"><strong>{p.price}</strong><small>{lang === 'es' ? '' : 'PROJECT PRICE'}</small></div>
+        <ul>{p.items.map(x=><li key={x}><BadgeCheck/>{x}</li>)}</ul>
+        <div className="package-delivery"><span>{lang === 'es' ? 'TIEMPO ESTIMADO DE ENTREGA' : 'ESTIMATED DELIVERY TIME'}</span><strong>{lang === 'es' ? '10–15 días hábiles' : '10–15 business days'}</strong></div>
+        <div className="package-support"><strong>{lang === 'es' ? '30 DÍAS DE SOPORTE INCLUIDOS' : '30 DAYS OF SUPPORT INCLUDED'}</strong><p>{lang === 'es' ? 'Incluye corrección de errores, cambios menores de contenido, imágenes y pequeños ajustes posteriores a la entrega.' : 'Includes bug fixes, minor content and image changes, and small adjustments after delivery.'}</p><small>{lang === 'es' ? 'No incluye nuevas funciones, rediseños completos ni ampliaciones del proyecto.' : 'Does not include new features, complete redesigns, or project expansions.'}</small></div>
+        <button onClick={() => onNavigate('contacto')}>{lang === 'es' ? 'SOLICITAR COTIZACIÓN' : 'REQUEST A QUOTE'} <ChevronRight /></button>
+      </div>)}
+    </div>
+    <section className="custom-project-invitation" data-future-fields="business-type,products-services,competition,mission,vision,reference-websites,social-media,project-goals">
+      <span>{lang === 'es' ? 'PROYECTO PERSONALIZADO' : 'CUSTOM PROJECT'}</span>
+      <h3>{lang === 'es' ? '¿BUSCAS UNA WEBSITE PERSONALIZADA?' : 'LOOKING FOR A CUSTOM WEBSITE?'}</h3>
+      <p>{lang === 'es' ? 'Si nuestros paquetes no se adaptan exactamente a tu proyecto, cuéntanos cómo imaginas tu presencia digital. Analizaremos tu idea y te propondremos la mejor solución para cumplir tus objetivos.' : 'If our packages do not fit your project exactly, tell us how you imagine your digital presence. We will analyze your idea and propose the best solution to meet your goals.'}</p>
+      <button type="button" onClick={() => onNavigate('contacto')}>{lang === 'es' ? 'DISEÑAR MI PROYECTO' : 'DESIGN MY PROJECT'} <ChevronRight /></button>
+    </section>
+  </motion.aside>;
 }
 
 function PortfolioPanel({ lang }) {
@@ -236,7 +257,7 @@ function ProcessPanel({ onNavigate, lang }) {
 }
 
 function ContactPanel({ lang }) {
- return <motion.aside className="v3-panel contact-v3" {...panelMotion}><div className="contact-glow"/><div className="contact-orb"><Brand /></div><div className="v3-panel-head centered"><span>{lang === 'es' ? 'IMPULSO / COTIZACIÓN' : 'IMPULSO / QUOTE'}</span><strong>{lang === 'es' ? 'HABLEMOS DE TU WEBSITE' : 'LET US TALK ABOUT YOUR WEBSITE'}</strong></div><p className="contact-copy">{lang === 'es' ? 'Cuéntanos sobre tu negocio y te ayudaremos a elegir la mejor forma de comenzar.' : 'Tell us about your business and we will help you choose the best way to get started.'}</p><div className="contact-list"><a href="tel:+18318698753"><Phone/><span>(831) 869-8753</span></a><a href="mailto:contacto@impulsodigital.com"><Mail/><span>contacto@impulsodigital.com</span></a><div><MapPin/><span>Salinas, California</span></div></div><button className="contact-cta">{lang === 'es' ? 'SOLICITAR COTIZACIÓN' : 'REQUEST A QUOTE'} <ChevronRight /></button></motion.aside>;
+ return <motion.aside className="v3-panel contact-v3" {...panelMotion}><div className="contact-glow"/><div className="contact-orb"><Brand /></div><div className="v3-panel-head centered"><span>{lang === 'es' ? 'IMPULSO / COTIZACIÓN' : 'IMPULSO / QUOTE'}</span><strong>{lang === 'es' ? 'HABLEMOS DE TU WEBSITE' : 'LET US TALK ABOUT YOUR WEBSITE'}</strong></div><p className="contact-copy">{lang === 'es' ? 'Cuéntanos sobre tu negocio y te ayudaremos a elegir la mejor forma de comenzar.' : 'Tell us about your business and we will help you choose the best way to get started.'}</p><div className="contact-list"><a href="tel:+18312881019"><Phone/><span>(831) 288-1019</span></a><a href="mailto:daniel@impulsodigitalglobal.com"><Mail/><span>daniel@impulsodigitalglobal.com</span></a><div><MapPin/><span>Salinas, California</span></div></div><button className="contact-cta">{lang === 'es' ? 'SOLICITAR COTIZACIÓN' : 'REQUEST A QUOTE'} <ChevronRight /></button></motion.aside>;
 }
 
 function RightPanel({ active, onNavigate, lang }) {
@@ -256,7 +277,7 @@ function MobileNavigation({ active, onChange, sections, lang }) {
  return <nav className="mobile-orbit-nav" aria-label={lang === 'es' ? 'Navegación móvil' : 'Mobile navigation'}>
    <div className="mobile-orbit-bg"><i/><i/><i/></div>
    <div className="mobile-orbit-track">
-     {sections.map(({id,label,Icon}, index)=>{
+     {sections.filter(({ id }) => id !== 'proceso').map(({id,label,Icon}, index)=>{
        const slot = slotFor(index);
        return <button key={id} data-slot={slot} className={`mobile-orbit-button ${active===id?'active':''}`} onClick={()=>onChange(id)} aria-label={label}>
          <span className="mobile-orbit-button-glow"/>
@@ -268,10 +289,12 @@ function MobileNavigation({ active, onChange, sections, lang }) {
  </nav>;
 }
 
-function Footer({ active, onChange, sections, lang }) { return <footer className="bottom-bar"><div className="drag-hint"><Mouse/><p><b>{lang === 'es' ? 'GIRA LA RUEDA' : 'TURN THE WHEEL'}</b><span>{lang === 'es' ? 'PARA NAVEGAR' : 'TO NAVIGATE'}</span></p></div><div className="section-progress"><div className="progress-line"/>{sections.map(s=><button key={s.id} className={active===s.id?'active':''} onClick={()=>onChange(s.id)}/>)}</div><div className="socials"/></footer>; }
+function Footer({ active, onChange, sections }) { return <footer className="bottom-bar"><div className="section-progress"><div className="progress-line"/>{sections.map(s=><button key={s.id} className={active===s.id?'active':''} onClick={()=>onChange(s.id)} aria-label={s.label}/>)}</div><div className="socials"/></footer>; }
 
 function Starfield() { const ref=useRef(null); useEffect(()=>{const c=ref.current,ctx=c.getContext('2d');let f;const stars=Array.from({length:95},()=>({x:Math.random(),y:Math.random(),a:Math.random()*.45+.1,s:Math.random()*1.1+.25}));const resize=()=>{c.width=innerWidth*devicePixelRatio;c.height=innerHeight*devicePixelRatio};const draw=()=>{ctx.clearRect(0,0,c.width,c.height);stars.forEach(st=>{ctx.globalAlpha=st.a;ctx.fillStyle='#9ed7ff';ctx.beginPath();ctx.arc(st.x*c.width,st.y*c.height,st.s*devicePixelRatio,0,Math.PI*2);ctx.fill()});f=requestAnimationFrame(draw)};resize();draw();addEventListener('resize',resize);return()=>{cancelAnimationFrame(f);removeEventListener('resize',resize)}},[]);return <canvas className="starfield" ref={ref}/>; }
 
-function App(){const[active,setActive]=useState('inicio');const[mobilePreview,setMobilePreview]=useState(false);const[lang,setLang]=useState('es');const[isRealMobile]=useState(()=>typeof window!=='undefined'&&(window.innerWidth<=760||((navigator.maxTouchPoints||0)>0&&window.matchMedia('(pointer: coarse)').matches&&(screen.width<=932||screen.height<=932))));const[desktopMode,setDesktopMode]=useState(false);const scrollStageRef=useRef(null);const sections=lang==='en'?sectionsEn:sectionsEs;useEffect(()=>{document.documentElement.lang=lang},[lang]);useEffect(()=>{const viewport=document.querySelector('meta[name=\"viewport\"]');if(!viewport)return;viewport.setAttribute('content',desktopMode&&!isRealMobile?'width=1440':'width=device-width, initial-scale=1.0');requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));window.scrollTo({top:0,left:0,behavior:'auto'});},[desktopMode,isRealMobile]);const changeSection=id=>{setActive(id);if(typeof window!=='undefined'&&!desktopMode&&(isRealMobile||window.matchMedia('(max-width: 760px)').matches)){requestAnimationFrame(()=>scrollStageRef.current?.scrollTo({top:0,left:0,behavior:'smooth'}));}};return <div className={`system-shell ${mobilePreview?'mobile-preview':''} ${desktopMode&&!isRealMobile?'force-desktop':''} ${isRealMobile?'real-mobile':''}`}><Starfield/><div className="grain"/><div className="ambient-light"/><Header mobilePreview={mobilePreview} onToggleMobile={()=>setMobilePreview(v=>!v)} lang={lang} onLanguage={setLang} isMobileDevice={isRealMobile} desktopMode={false} onToggleDesktop={()=>{}}/><MechanicalWheel active={active} onChange={changeSection} sections={sections} lang={lang}/><MobileNavigation active={active} onChange={changeSection} sections={sections} lang={lang}/><div className="mobile-scroll-stage" ref={scrollStageRef}><ContentPanel active={active} onNavigate={changeSection} lang={lang}/><RightPanel active={active} onNavigate={changeSection} lang={lang}/></div><Footer active={active} onChange={changeSection} sections={sections} lang={lang}/></div>}
+function FloatingCallButton({ lang }) { return <a className="floating-call-button" href="tel:+18312881019" aria-label={lang === 'es' ? 'Llamar a Impulso Digital' : 'Call Impulso Digital'}><Phone/><span>{lang === 'es' ? 'LLÁMANOS' : 'CALL US'}</span></a>; }
+
+function App(){const[active,setActive]=useState('inicio');const[mobilePreview,setMobilePreview]=useState(false);const[lang,setLang]=useState('es');const[isRealMobile]=useState(()=>typeof window!=='undefined'&&(window.innerWidth<=760||((navigator.maxTouchPoints||0)>0&&window.matchMedia('(pointer: coarse)').matches&&(screen.width<=932||screen.height<=932))));const[desktopMode,setDesktopMode]=useState(false);const scrollStageRef=useRef(null);const sections=lang==='en'?sectionsEn:sectionsEs;useEffect(()=>{document.documentElement.lang=lang},[lang]);useEffect(()=>{const viewport=document.querySelector('meta[name=\"viewport\"]');if(!viewport)return;viewport.setAttribute('content',desktopMode&&!isRealMobile?'width=1440':'width=device-width, initial-scale=1.0');requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));window.scrollTo({top:0,left:0,behavior:'auto'});},[desktopMode,isRealMobile]);const changeSection=id=>{setActive(id);if(typeof window!=='undefined'&&!desktopMode&&(isRealMobile||window.matchMedia('(max-width: 760px)').matches)){requestAnimationFrame(()=>scrollStageRef.current?.scrollTo({top:0,left:0,behavior:'smooth'}));}};return <div className={`system-shell ${mobilePreview?'mobile-preview':''} ${desktopMode&&!isRealMobile?'force-desktop':''} ${isRealMobile?'real-mobile':''}`}><Starfield/><div className="grain"/><div className="ambient-light"/><Header mobilePreview={mobilePreview} onToggleMobile={()=>setMobilePreview(v=>!v)} lang={lang} onLanguage={setLang} isMobileDevice={isRealMobile} desktopMode={false} onToggleDesktop={()=>{}}/><MechanicalWheel active={active} onChange={changeSection} sections={sections} lang={lang}/><MobileNavigation active={active} onChange={changeSection} sections={sections} lang={lang}/><div className="mobile-scroll-stage" ref={scrollStageRef}><ContentPanel active={active} onNavigate={changeSection} lang={lang}/><RightPanel active={active} onNavigate={changeSection} lang={lang}/></div><FloatingCallButton lang={lang}/><Footer active={active} onChange={changeSection} sections={sections} lang={lang}/></div>}
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><App/></React.StrictMode>);
