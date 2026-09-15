@@ -23,3 +23,14 @@ await cp(
   'dist/standalone/project-assets',
   { recursive: true }
 );
+
+// Copiar logos usados por la versión standalone al directorio publicado por Vercel
+await copyFile(
+  'standalone/impulso-logo-mark-blue.png',
+  'dist/standalone/impulso-logo-mark-blue.png'
+);
+
+await copyFile(
+  'standalone/impulso-logo-header-blue.png',
+  'dist/standalone/impulso-logo-header-blue.png'
+);
